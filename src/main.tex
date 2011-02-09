@@ -1,0 +1,224 @@
+% ---------------------------------------------------------------------
+% -------------- PREAMBLE ---------------------------------------------
+% ---------------------------------------------------------------------
+\documentclass[12pt,a4paper,finnish,oneside]{article}
+%\documentclass[12pt,a4paper,finnish,twoside]{article}
+%\documentclass[12pt,a4paper,finnish,oneside,draft]{article} % luonnos, nopeampi
+
+% Valitse 'input encoding':
+%\usepackage[latin1]{inputenc} % merkistökoodaus, jos ISO-LATIN-1:tä.
+\usepackage[utf8]{inputenc}   % merkistökoodaus, jos käytetään UTF8:a
+% Valitse 'output/font encoding':
+%\usepackage[T1]{fontenc}      % korjaa ääkkösten tavutusta, bittikarttana
+\usepackage{ae,aecompl}       % ed. lis. vektorigrafiikkana bittikartan sijasta
+% Kieli- ja tavutuspaketit:
+\usepackage[english,swedish,finnish]{babel}
+% Kurssin omat asetukset aaltosci_t.sty:
+\usepackage{aaltosci_t}
+% Jos kirjoitat muulla kuin suomen kielellä valitse:
+%\usepackage[finnish]{aaltosci_t}           
+%\usepackage[swedish]{aaltosci_t}           
+%\usepackage[english]{aaltosci_t}           
+% Muita paketteja:
+\usepackage{alltt}
+\usepackage{amsmath}   % matematiikkaa
+\usepackage{calc}      % käytetään laskurien (counter) yhteydessä (tiedot.tex)
+\usepackage{eurosym}   % eurosymboli: \euro{}
+\usepackage{url}       % \url{...}
+\usepackage{hyphenat}  % tavutuksen viilaamiseen liittyvä (hyphenpenalty,...)
+\usepackage{supertabular,array}  % useampisivuinen taulukko
+
+% Koko dokumentin kattavia asetuksia:
+%\hyphenation{vää-rin me-ne-vi-en eri-kois-ten sa-no-jen tavu-raja-ehdo-tuk-set}
+% paikallisesti voi myös ta\-vut\-taa 
+
+% Rangaistaan tavutusta (ei toimi?! Onko hyphenat-paketti asennettu?)
+\hyphenpenalty=10000   % rangaistaan tavutuksesta, 10000=ääretön
+\tolerance=1000        % siedetään välejä riveillä
+% titlesec-paketti auttaa, jos tämän mukana menee sekaisin
+
+% Rivivälin muuttaminen:
+\linespread{1.24}\selectfont               % riviväli 1.5
+%\linespread{1.24}\selectfont               % riviväli 1, kun kommentoit pois
+
+% ---------------------------------------------------------------------
+% -------------- DOCUMENT ---------------------------------------------
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+% -------------- Tähän dokumenttiin liittyviä valintoja  --------------
+
+%\raggedright         % Tasattu vain vasemmalta, ei tavutusta
+\input{makroja}       % Haetaan joitakin makroja
+
+\selectlanguage{finnish}
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+% ---------------------------------------------------------------------
+% -------------- Luettelosivut alkavat --------------------------------
+% ---------------------------------------------------------------------
+
+% -------------- Nimiölehti ja sen tiedot -----------------------------
+%
+% Nimiölehti ja tiivistelmä kirjoitetaan seminaarin mukaan joko
+% suomeksi tai ruotsiksi (ellei erityisesti kielenä ole englanti). 
+% Tiivistelmän voi suomen/ruotsin lisäksi kirjoittaa halutessaan
+% myös englanniksi. Eli tiivistelmiä tulee yksi tai kaksi kpl.
+%
+% "\MUUTTUJA"-kohdat luetaan aaltosci_t.sty:ä varten.
+
+\author{Ferrix Hovi}
+
+\title{Ilkeiden jutukkeiden pyöräyttäminen}
+% 2-osainen otsikko:
+%\title{\LaTeX{}-pohja kandidaatintyölle \\[5mm] Pitkiä rivejä kokeilun vuoksi.}
+
+% Otsikko tiivistelmään. Jos lisäksi engl. tiivistelmä, niin viimeisin:
+\TITLE{Ilkeiden jutukkeiden pyöräyttäminen}
+\ENTITLE{Dances with evil thingamajiggies}
+% 2-osainen otsikko korvataan täällä esim. pisteellä:
+%\TITLE{\LaTeX{}-pohja kandidaatintyölle. Pitkiä rivejä kokeilun vuoksi.}
+
+\DEPT{Tietotekniikan laitos}               % T
+\ENDEPT{Department of Computer Science Engineering}     % T
+
+% Vuosi ja päivämäärä, jolloin työ on jätetty tarkistettavaksi.
+\YEAR{2011}
+\DATE{31. helmikuuta 2011}
+\ENDATE{February 31, 2011}
+
+% Kurssin vastuuopettaja ja työsi ohjaaja(t)
+\SUPERVISOR{Ma professori Tomi Janhunen}
+\INSTRUCTOR{Dosentti Ari Korhonen}
+
+\ENSUPERVISOR{Professor (tem) Tomi Janhunen}
+\ENINSTRUCTOR{Docent Ari Korhonen}
+
+\PAAAINE{Ohjelmistotuotanto ja -liiketoiminta}
+\CODE{T3003}
+
+\KEYWORDS{avain, sanoja, niitäkin, tähän, vielä, useampi, vaikkei, %
+niitä, niin, montaa, oikeasti, tarvitse}
+\ENKEYWORDS{key, words, the same as in FIN/SWE}
+
+% Tiivistelmään tulevat sivumäärät. 
+% Kirjoita lopulliset sivumäärät käsin tai kokeile koodia. 
+%
+% Ohje 14.11.2006, luku 4.2.5:
+% - sivumäärä = tekstiosan (alkaen johdantoluvusta) ja 
+%   lähdeluettelon sivumäärä, esim. "20"
+% - jos liitteet, niin edellisen lisäksi liitteiden sivumäärä,
+%   tyyli "20 + 5", jossa 5 sivua liitteitä 
+% - HUOM! Tässä oletuksena sivunumerointi alkaa nimiölehdestä 
+%   sivunumerolla 1. %   Toisin sanoen, viimeisen lähdeluettelosivun 
+%   sivunumero EI ole sivujen määrä vaan se pitää laskea tähän käsin
+
+\PAGES{999}          % 999 tekstisivua
+%\PAGES{999 $+$ 123}  % 999 tekstisivua + 123 liitesivua
+
+%\thispagestyle{empty}  % nimiölehdellä ei sivunumerointia; tyylin mukaan ei tehdäkään?!
+
+\maketitle             % tehdään nimiölehti
+
+% -------------- Tiivistelmä / abstract -------------------------------
+% Lisää abstrakti kandikielellä (ja halutessasi lisäksi englanniksi).
+
+% Edelleen sivunumerointiin. Eräs ohje käskee aloittaa sivunumeroiden
+% laskemisen nimiösivulta kuitenkin niin, että sille ei numeroa merkitä
+% (Kauranen, luku 5.2.2). Näin ollen ensimmäisen tiivistelmän sivunumero
+% on 2. \maketitle komento jotenkin kadottaa sivunumeronsa.
+\setcounter{page}{2}    % sivunumeroksi tulee 2
+
+\input{luku_abstraktit}
+
+% -------------- Alkusanat --------------------------------------------
+% Suositus: ÄLÄ käytä kandidaatintyössä.
+%
+%\newpage
+%\input{luku_alkusanat}
+%\clearpage                     % luku loppuu, loput kelluvat tänne
+%\newpage
+
+% -------------- Symbolit ja lyhenteet --------------------------------
+% Suositus: Käytä vasta kun paljon symboleja tai lyhenteitä.
+%
+%\input{luku_lyhenteet} 
+%\clearpage                     % luku loppuu, loput kelluvat tänne
+
+% -------------- Kuvat ja taulukot ------------------------------------
+% Kirjoissa (väitöskirja) on usein tässä kuvien ja taulukoiden listaus.
+% Suositus: Ei kandityöhön.
+
+% -------------- Sisällysluettelo / TOC -------------------------------
+
+\tableofcontents
+
+\label{pages:prelude}
+\clearpage                     % kappale loppuu, loput kelluvat tänne, sivunv.
+%\newpage
+
+% ---------------------------------------------------------------------
+% -------------- Tekstiosa alkaa --------------------------------------
+% ---------------------------------------------------------------------
+
+% Muutetaan tarvittaessa ala- ja ylätunnisteet
+%\pagestyle{headings}          % headeriin lisätietoja
+%\pagestyle{fancyheadings}     % headeriin lisätietoja
+%\pagestyle{plain}             % ei header, footer: sivunumero
+
+% Sivunumerointi, jos käytetty 'roman' aiemmin
+% \pagenumbering{arabic}        % 1,2,3, samalla alustaa laskurin ykköseksi
+% \thispagestyle{empty}         % pyydetty ensimmäinen tekstisivu tyhjäksi
+
+% input-komento upottaa tiedoston 
+\input{luku_sisalto}
+%\clearpage                     % luku loppuu, loput kelluvat tänne, sivunv.
+
+\label{pages:text}
+%\clearpage                     % luku loppuu, loput kelluvat tänne, sivunv.
+
+%\newpage                       % pakota lähdeluettelo alkamaan uudelta s.
+
+% -------------- Lähdeluettelo / reference list -----------------------
+%
+% Muista, että saat kirjallisuusluettelon vasta
+%  kun olet kääntänyt ja kaulinnut "latex, bibtex, latex, latex"
+%  (ellet käytä Makefilea ja "make")
+
+% Viitetyylitiedosto aaltosci_t.bst; muokattu HY:n tktl-tyylistä.
+% Pakettiin natbib liittyen katso esim. 
+% http://merkel.zoneo.net/Latex/natbib.php
+% jossa selitykset citep, citet, bibpunct, jne.
+\bibliographystyle{aaltosci_t}
+\bibpunct{(}{)}{;}{a}{,}{,}    % a = author-year
+%\bibpunct{[}{]}{;}{n}{,}{,}    % n = numerical style
+
+% Muutetaan otsikko "Kirjallisuutta" -> "Lähteet"
+\renewcommand{\refname}{Lähteet}  % article-tyyppisen
+%\renewcommand{\bibname}{Lähteet}  % jos olisi book, report-tyyppinen
+
+% Lisätään sisällysluetteloon
+\addcontentsline{toc}{section}{\refname}  % article
+%\addcontentsline{toc}{chapter}{\bibname}  % book, report
+
+% Määritä kaikki bib-tiedostot
+\bibliography{lahteet}
+%\bibliography{thesis_sources,ietf_sources}
+
+\label{pages:refs}
+\clearpage         % erotetaan mahd. liitteet alkamaan uudelta sivulta
+
+% -------------- Liitteet / Appendices --------------------------------
+%
+% Liitteitä ei yleensä tarvita. Joskus matemaattisen kaavan
+%  tarkempi johtaminen, haastattelurunko, kyselypohja, 
+%  ylimääräisiä kuvia, lyhyitä ohjelmakoodeja tai datatiedostoja.
+%
+%\appendix
+%\input{luku_liitteet}
+
+\label{pages:appendices}
+
+\end{document}

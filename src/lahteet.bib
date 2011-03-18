@@ -1,92 +1,39 @@
-
-@book{kauranen2006,
-        author={Kauranen,Ilkka and Mustakallio,Mikko A. and Palmgren,Virpi},
-        year={2006},
-        title={Tutkimusraportin kirjoittamisen opas opinnäytetyön tekijöille},
-        publisher={Teknillinen korkeakoulu},
-        address={Espoo},
-        pages={109 s},
-        note={Lisäpainokset: 2. korj. p. 2007.},
-        isbn={951-22-8359-X (nid.)},
-        language={fin}
-}
-
-@book{goossens1994,
-        author={Goossens,Michel and Mittelbach,Frank and Samarin,Alexander},
-        year={1994},
-        title={The LATEX companion},
-        publisher={Addison-Wesley},
-        address={Reading (MA)},
-        pages={528 s},
-        isbn={0-201-54199-8},
-        language={eng}
-}
-
-@book{mittelbach2004Safari,
-        author={Mittelbach,Frank},
+@article{heffleymeunier2004,
+        author={Heffley,J. and Meunier,P.},
         year={2004},
-        title={{The LaTeX companion}},
-        publisher={Safari Tech Books Online},
-        address={Boston, MA},
-        edition={2nd ed.},
-        note={Safari Tech Books Online},
-        language={eng}
+        title={Can source code auditing software identify common vulnerabilities and be used to evaluate software security?},
+        journal={System Sciences, 2004.Proceedings of the 37th Annual Hawaii International Conference on},
+        note={ID: IEEE\_XPLORE\_NEW; ID: IEEE/IEE Electronic Library},
+        abstract={Software vulnerabilities are a growing problem (c.f. MITRE's CVE, http://eve.mitre.org). Moreover, many of the mistakes leading to vulnerabilities are repeated often. Source code auditing tools could be a great help in identifying common mistakes, or in evaluating the security of software. We investigated the effectiveness of the auditing tools we could access, using the following criteria: number of false positives, false negatives by comparison to known vulnerabilities, and time required to validate the warnings related to vulnerabilities. Some of the known vulnerabilities could not be found by any code auditor, because they were fairly unusual or involved knowledge not contained or codified in the source code. The coding problems that could be identified consisted of string format vulnerabilities, buffer overflows, race conditions, memory leaks, and symlink attacks. However, we found it extremely time-consuming to validate warnings related to the latter four types, because the number of false positives was very high, and because it was not easily apparent if they were real vulnerabilities. These required that the code be audited locally, by people familiar with the code, and carefully inspected to see if the values could be manipulated in such a way as to produce malicious effects. However, the string format vulnerabilities were much easier to recognize. In small and medium scale projects, the open source program Pscan was useful in finding a mix of coding style issues that could potentially enable string format vulnerabilities, as well as actual vulnerabilities. The limitations of Pscan were more obvious in large scale projects like OpenBSD, as more false positives occurred. Clearly, auditing source code for all vulnerabilities remains a time-consuming process, even with the help of the current tools, and more research is needed in identifying and avoiding other common mistakes.},
+        isbn={0-7695-2056-1},
+        url={http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1265654},
 }
 
-@book{mittelbach2004,
-        author={Mittelbach,Frank and Goossens,Michel and Braams,Johannes},
+@article{truong2004,
+        author={Truong,Nghi},
         year={2004},
-        title={{The LaTeX companion}},
-        publisher={Addison-Wesley},
-        address={Boston},
-        pages={1090 s. +},
-        edition={2nd ed.},
-        note={Lisäpainokset: Repr. 2006.},
-        keywords={textbehandling - dataprogram; textproduktion; datorsättning; tekstinkäsittely; tekstinvalmistus; Latex; atk-ohjelmat - LaTeX; tekstinkäsittely - atk-ohjelmat; tekstinvalmistus - atk-ohjelmat; graafinen teollisuus; ohjelmistot; Printing industry; Computerized typesetting; Software; textbehandling; atk-ohjelmat},
-        isbn={0-201-36299-6 (nid.)},
-        language={eng}
+        title={Static analysis of students' {J}ava programs},
+        journal={ACE '04: Proceedings of the sixth conference on Australasian computing education - Volume 30},
+        volume={30},
+        note={ID: ACM; ID: ACM - Association for Computing Machinery},
+        abstract={A recent industry survey (Townhidnejad and Hilburn, 2002) has reported that more than fifty percent of a software project's budget is spent on activities related to improving software quality. Industry leaders claim that this is caused by the inadequate ...},
+        keywords={Java; Web; XML; online learning; static analysis; tutoring system},
+        url={http://portal.acm.org/citation.cfm?id=979968.980011&coll=DL&dl=GUIDE&CFID=12476114&CFTOKEN=64400677},
 }
 
-
-
-
-@Misc{mattakivela,
-  OPTkey = 	 {},
-  author = 	 {Kivelä, Simo K.},
-  title = 	 {{LaTeX-kurssi}},
-  OPThowpublished = {},
-  OPTmonth = 	 {},
-  OPTyear = 	 {},
-  note = 	 {Saatavissa \url{http://matta.hut.fi/matta2/latex/index.html}. Viitattu 28.1.2011.},
-  OPTannote = 	 {}
+@article{taft2008,
+        author={Taft,S. T.},
+        year={2008},
+        title={Systematic {S}canning for {M}alicious {S}ource {C}ode},
+        journal={Technologies for Homeland Security, 2008 IEEE Conference on},
+        pages={173--175},
+        note={ID: IEEE\_XPLORE\_NEW; ID: IEEE/IEE Electronic Library},
+        abstract={For an organization that depends on software for important parts of its mission, safety and security flaws in such software are major concerns. Although there is a growing number of tools that can be helpful in identifying unintentionally inserted safety or security flaws, the possibility of intentionally inserted "flaws" or back doors can no longer be ignored. Fundamentally, an intentionally inserted back door can only be recognized by the fact that it does more rather than less of what it is supposed to do. For example, a function that is expected to only query the balance of a bank account, may also, as a side-effect under special circumstances that are unlikely to be encountered during testing, transfer money between accounts. To locate such hidden side-effects, it requires that the semantics of each function somehow be extracted from the source code and presented to a reviewer in a way that allows them to recognize inappropriate actions. In this paper we describe scanning technology that can automatically extract the pre- and post-conditions of every function in the system, including both direct and indirect effects of each function, and present these to a reviewer in human-comprehensible terms. For each external entry point into the system, the postconditions in particular may then be compared against the expected effects of the function, and where potentially inappropriate side- effects are identified, these effects may be traced down through the program to the point where they occur.},
+        isbn={978-1-4244-1977-7},
+        url={http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4534444},
+}
 }
 
-@Misc{lyhyt2e,
-  OPTkey = 	 {},
-  author = 	 {Oetiker, Tobias},
-  title = 	 {{Pitkänpuoleinen johdanto LaTeX2e:n käyttöön}},
-  OPThowpublished = {},
-  OPTmonth = 	 {},
-  OPTyear = 	 {},
-  note = 	 {Saatavissa \url{ftp://www.ctan.org/ctan/info/lshort/finnish/lyhyt2e.pdf}. Viitattu 28.1.2011.},
-  OPTannote = 	 {}
-}
-
-
-@Article{AAP+04,
-  author =	 {Dimitrios I. Axiotis and Tareq Al-Gizawi and
-                  Konstatntinos Peppas and Emmanuel N. Protonotarios
-                  and Fotis I. Lazarakis and Constantitnos Papadias
-                  and Panos I. Philippopoulos},
-  title =	 {Services in Interworking {3G} and {WLAN}
-                  Environments},
-  journal =	 {IEEE Wireless Communications},
-  year =	 2004,
-  volume =	 11,
-  number =	 5,
-  pages =	 {14-20},
-  month =	 oct
-}
 
 @book{hand2001principles,
   title={{Principles of data mining}},

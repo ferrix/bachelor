@@ -1,12 +1,112 @@
-@article{heffleymeunier2004,
-        author={Heffley,J. and Meunier,P.},
-        year={2004},
-        title={Can source code auditing software identify common vulnerabilities and be used to evaluate software security?},
-        journal={System Sciences, 2004.Proceedings of the 37th Annual Hawaii International Conference on},
-        note={ID: IEEE\_XPLORE\_NEW; ID: IEEE/IEE Electronic Library},
-        abstract={Software vulnerabilities are a growing problem (c.f. MITRE's CVE, http://eve.mitre.org). Moreover, many of the mistakes leading to vulnerabilities are repeated often. Source code auditing tools could be a great help in identifying common mistakes, or in evaluating the security of software. We investigated the effectiveness of the auditing tools we could access, using the following criteria: number of false positives, false negatives by comparison to known vulnerabilities, and time required to validate the warnings related to vulnerabilities. Some of the known vulnerabilities could not be found by any code auditor, because they were fairly unusual or involved knowledge not contained or codified in the source code. The coding problems that could be identified consisted of string format vulnerabilities, buffer overflows, race conditions, memory leaks, and symlink attacks. However, we found it extremely time-consuming to validate warnings related to the latter four types, because the number of false positives was very high, and because it was not easily apparent if they were real vulnerabilities. These required that the code be audited locally, by people familiar with the code, and carefully inspected to see if the values could be manipulated in such a way as to produce malicious effects. However, the string format vulnerabilities were much easier to recognize. In small and medium scale projects, the open source program Pscan was useful in finding a mix of coding style issues that could potentially enable string format vulnerabilities, as well as actual vulnerabilities. The limitations of Pscan were more obvious in large scale projects like OpenBSD, as more false positives occurred. Clearly, auditing source code for all vulnerabilities remains a time-consuming process, even with the help of the current tools, and more research is needed in identifying and avoiding other common mistakes.},
-        isbn={0-7695-2056-1},
-        url={http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1265654},
+@conference{tevis2004methods,
+  title={{Methods for the prevention, detection and removal of software security vulnerabilities}},
+  author={Tevis, J.E.J. and Hamilton, J.A.},
+  booktitle={Proceedings of the 42nd annual Southeast regional conference},
+  pages={197--202},
+  isbn={1581138709},
+  year={2004},
+  organization={ACM}
+}
+
+@conference{trakla,
+  title={{Algorithm simulation with automatic assessment}},
+  author={Korhonen, A. and Malmi, L.},
+  booktitle={Proceedings of the 5th annual SIGCSE/SIGCUE ITiCSEconference on Innovation and technology in computer science education},
+  pages={160--163},
+  isbn={1581132077},
+  year={2000},
+  organization={ACM}
+}
+
+@book{sicp,
+  title={{Structure and interpretation of computer programs}},
+  author={Abelson, H. and Sussman, G.J. and Sussman, J. and Perlis, A.J.},
+  isbn={0262011530},
+  year={1996},
+  publisher={Mit Press Cambridge, MA}
+}
+
+@conference{moser2007limits,
+  title={{Limits of static analysis for malware detection}},
+  author={Moser, A. and Kruegel, C. and Kirda, E.},
+  booktitle={acsac},
+  pages={421--430},
+  issn={1063-9527},
+  year={2007},
+  organization={IEEE Computer Society}
+}
+
+@MastersThesis{Teekkari2010,
+  author = 	 {Teemu Teekkari},
+  title = 	 {Diplomityöni},
+  school = 	 {Aalto yliopisto},
+  year = 	 {2010},
+  type = 	 {Diplomityö},
+  note =		 {Saatavissa \url{http://www.cis.hut.fi/
+rtfm.html}. Viitattu 25.4.2011.},
+  address = 	 {Espoo}
+}
+@MastersThesis{Kesti2010,
+    author = {Veli-Jussi Kesti},
+    title = {Virtualisointiratkaisun valinta haittaohjelmatutkimukseen},
+    school = {Aalto yliopisto},
+    year = {2010},
+    type = {Kandidaatintyö},
+    address = {Espoo}
+}
+
+@MastersThesis{Hiisila2005,
+    author = {Aki Hiisilä},
+    title = {Kurssinhallintajärjestelmä ohjelmoinnin perusopetuksen avuksi},
+    school = {Teknillinen korkeakoulu},
+    year = {2005},
+    type = {Diplomityö},
+    address = {Espoo},
+    note = {Saatavissa \url{http://goblin.hut.fi/goblin/diplomityo.pdf}. Viitattu 25.4.2011.} 
+}
+@article{heffley2004can,
+  title={{Can source code auditing software identify common vulnerabilities and be used to evaluate software security?}},
+  author={Heffley, J. and Meunier, P.},
+  issn={1530-1605},
+  year={2004},
+  publisher={IEEE Computer Society}
+}
+
+@conference{taft2008systematic,
+  title={{Systematic Scanning for Malicious Source Code}},
+  author={Taft, ST},
+  booktitle={Technologies for Homeland Security, 2008 IEEE Conference on},
+  pages={173--175},
+  year={2008},
+  organization={IEEE}
+}
+
+@conference{saikkonen2001fully,
+  title={{Fully automatic assessment of programming exercises}},
+  author={Saikkonen, R. and Malmi, L. and Korhonen, A.},
+  booktitle={ACM SIGCSE Bulletin},
+  volume={33},
+  number={3},
+  pages={133--136},
+  isbn={1581133308},
+  issn={0097-8418},
+  year={2001},
+  organization={ACM}
+}
+
+@misc{liljasaikkonen,
+    author = {T. Lilja and R. Saikkonen}
+    title = {Scheme-robo manual},
+    year = 2003, 
+    url = {http://www.cs.hut.fi/Research/Scheme-robo/},
+    note = {Scheme-robon WWW-sivu. Viitattu 25.4.2011.}
+}
+
+@misc{Simes,
+  title = {How to break out of a chroot() jail},
+  author = {Simes},
+  year = {2002},
+  note = {\url{http://www.bpfh.net/simes/computing/chroot-break.html}. Viitattu 25.4.2011.}
 }
 
 @article{truong2004,
@@ -20,29 +120,6 @@
         keywords={Java; Web; XML; online learning; static analysis; tutoring system},
         url={http://portal.acm.org/citation.cfm?id=979968.980011&coll=DL&dl=GUIDE&CFID=12476114&CFTOKEN=64400677},
 }
-
-@article{taft2008,
-        author={Taft,S. T.},
-        year={2008},
-        title={Systematic {S}canning for {M}alicious {S}ource {C}ode},
-        journal={Technologies for Homeland Security, 2008 IEEE Conference on},
-        pages={173--175},
-        note={ID: IEEE\_XPLORE\_NEW; ID: IEEE/IEE Electronic Library},
-        abstract={For an organization that depends on software for important parts of its mission, safety and security flaws in such software are major concerns. Although there is a growing number of tools that can be helpful in identifying unintentionally inserted safety or security flaws, the possibility of intentionally inserted "flaws" or back doors can no longer be ignored. Fundamentally, an intentionally inserted back door can only be recognized by the fact that it does more rather than less of what it is supposed to do. For example, a function that is expected to only query the balance of a bank account, may also, as a side-effect under special circumstances that are unlikely to be encountered during testing, transfer money between accounts. To locate such hidden side-effects, it requires that the semantics of each function somehow be extracted from the source code and presented to a reviewer in a way that allows them to recognize inappropriate actions. In this paper we describe scanning technology that can automatically extract the pre- and post-conditions of every function in the system, including both direct and indirect effects of each function, and present these to a reviewer in human-comprehensible terms. For each external entry point into the system, the postconditions in particular may then be compared against the expected effects of the function, and where potentially inappropriate side- effects are identified, these effects may be traced down through the program to the point where they occur.},
-        isbn={978-1-4244-1977-7},
-        url={http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4534444},
-}
-}
-
-
-@book{hand2001principles,
-  title={{Principles of data mining}},
-  author={Hand, D.J. and Mannila, H. and Smyth, P.},
-  isbn={026208290X},
-  year={2001},
-  publisher={The MIT press}
-}
-
 
 @InProceedings{AB95,
   author =	 {Ross J. Anderson and S. Johann Bezuidenhout},
@@ -95,44 +172,6 @@
   year =	 2003,
   month =	 jul,
   note =	 {Status: DRAFT STANDARD}
-}
-
-
-@misc{ipdcforum_def,
-  title =	 {{About {IP} Datacasting - Overview}},
-  author =	 {{IPDC Forum}},
-  url =          {http://www.ipdc-forum.org/about/index.html},
-  year =         {2004},
-  note =	 {{IPDC Forumin WWW-sivu. Viitattu 18.2.2004.}}
-}
-
-@MastersThesis{Teekkari2010,
-  author = 	 {Teemu Teekkari},
-  title = 	 {Diplomityöni},
-  school = 	 {Aalto yliopisto},
-  year = 	 {2010},
-  type = 	 {Diplomityö},
-  note =		 {Saatavissa \url{http://www.cis.hut.fi/
-teemu/katkotaan/
-rivia/
-jotta/
-helpompi/
-katkaista/
-sopivasta/
-kohtaa/
-tamakin/
-litania/
-poikki/
-rtfm.html}. Viitattu 25.1.2011.},
-  address = 	 {Espoo}
-}
-@MastersThesis{Kesti2010,
-    author = {Veli-Jussi Kesti},
-    title = {},
-    school = {Aalto yliopisto},
-    year = {2010},
-    type = {Kandidaatintyö},
-    address = {Espoo}
 }
 
 

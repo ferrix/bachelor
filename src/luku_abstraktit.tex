@@ -6,27 +6,31 @@
 % Avainsanojen lista pitää merkitä main.tex-tiedoston kohtaan \KEYWORDS.
 
 \begin{fiabstract}
-  Tämä on TIK.kand-kurssin \LaTeX{}-pohja, jota voi vapaasti
-  käyttää. Koko zip-paketin voi ladata kurssin Noppa-sivulta
-  \url{https://noppa.tkk.fi/noppa/kurssi/TIK.kand/materiaali/}.
-  Mukana on esimerkkejä \LaTeX{}:n käytöstä.
+Käytännön harjoittelulla on merkittävä rooli ohjelmoinnin opetuksessa ja
+kurssit ovat usein suuria. Automaattisella arvostelulla on tässä suuri
+oppimista tehostava vaikutus. Toisaalta tuntemattoman ohjelmakoodin
+suorittaminen on aina riski. Tämä työ tutkii kahta TKK:lla kehitettyä
+kotitehtävätarkistinta turvallisuusnäkökulmasta ja selvittää, voiko staattista
+analyysiä lisäämällä parantaa näiden turvallisuutta. Lisäksi tutkitaan
+opetettavan ohjelmointikielen vaikutusta tarkistimeen liittyviin riskeihin.
 
-  Teksti on peräisin TIK.kand-kurssin historiallisesta
-  \LaTeX{}-pohjasta, jota kurssin koordinaattori Jukka Parviainen
-  päivitti tammikuussa 2011.  Lisäksi suomen kielen lehtori Sanni
-  Heintzmann kirjoitti rakenteellisia vinkkejä.
+TKK:lla kehitetyt tarkistimet EXPACA ja {\scmrobo} ovat lähestymistavoiltaan
+hyvin erilaisia. Edellinen suorittaa käännettyä ohjelmaa virtuaalikonsolissa
+ja jälkimmäinen suorittaa Scheme-proseduuria metasirkulaarisessa tulkissa.
+{\scmrobo} on onnistuneesti rajannut kielen riskialttiit ominaisuudet pois
+eikä siinä siksi ole ilmeisiä turvallisuusriskejä. EXPACA suorittaa
+täysimittaisia ohjelmia, jotka on toteutettu virhealttiilla kielillä. Tämän
+takia staattisen analyysin lisäämisestä tarkistusprosessiin voisi olla hyötyä.
 
-  Tiivistelmä on muusta työstä täysin irrallinen teksti, joka
-  kirjoitetaan tiivistelmälomakkeelle vasta, kun koko työ on
-  valmis. Se on suppea ja itsenäinen teksti, joka kuvaa olennaisen
-  opinnäytteen sisällöstä. Tavoitteena selvittää työn merkitys
-  lukijalle ja antaa yleiskuva työstä. Tiivistelmä markkinoi työtäsi
-  potentiaalisille lukijoille, siksi tutkimusongelman ja tärkeimmät
-  tulokset kannattaa kertoa selkeästi ja napakasti. Tiivistelmä
-  kirjoitetaan hieman yleistajuisemmin kuin itse työ, koska teksti
-  palvelee tiedonvälitystarkoituksessa laajaa yleisöä.
+Staattiset analysaattorit antavat yleisesti ottaen niin paljon vääriä
+hälytyksiä, ettei niiden käyttö automaattisessa arvostelussa ole mielekästä.
+Pscan ja UNO ovat analysaattoreita, jotka havaitsevat yhteensä neljän tyyppisiä
+ongelmia. Ne tuottavat keskimääräistä vähemmän vääriä hälytyksiä ja soveltuvat
+mahdollisesti EXPACAn laajentamiseen.
 
-%Tiivistelmätekstiä tähän (\languagename). Huomaa, että tiivistelmä tehdään %vasta kun koko työ on muuten kirjoitettu.
+Työssä havaitaan myös, että opetettavalla ohjelmointikielellä ja staattisen
+analyysin opetuksella voi olla suuri merkitys opiskelijoiden tietämykselle
+turvallisesta ohjelmointitavasta.
 \end{fiabstract}
 
 %\begin{svabstract}
@@ -34,7 +38,7 @@
 %%(\languagename)
 %\end{svabstract}
 
-\begin{enabstract}
-  Here goes the abstract 
-(\languagename)
-\end{enabstract}
+%\begin{enabstract}
+%  Here goes the abstract. FIXME
+%(\languagename)
+%\end{enabstract}

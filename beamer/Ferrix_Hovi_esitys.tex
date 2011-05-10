@@ -1,0 +1,185 @@
+\documentclass[first=dgreen,second=purple,logo=bluequo]{aaltoslides}
+%\documentclass{aaltoslides} % DEFAULT
+%\documentclass[first=purple,second=lgreen,logo=redque,normaltitle,nofoot]{aaltoslides} % SOME OPTION EXAMPLES
+
+\usepackage[latin9]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath}
+\usepackage{url}
+\usepackage{lastpage}
+
+\title{Ohjelmointiharjoituksien turvallisuuden automaattinen arviointi}
+
+\author[F. Hovi]{Ferrix Hovi}
+\institute[peruskoulu]{Tietotekniikan laitos\\
+Aalto-yliopisto, Perustieteiden korkeakoulu\\ferrix.hovi@ferrix.fi}
+
+\aaltofootertext{Ohjelmointiharjoitusten turvallisuuden automaattinen arviointi}{10. toukokuuta 2011}{\insertframenumber/\inserttotalframenumber}
+
+\date{10. toukokuuta 2011}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\aaltotitleframe
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Motivaatio}
+\begin{itemize}
+\item Ohjelmoinnin opiskelu vaatii käytännön harjoittelua.
+\item Opetus tapahtuu massakursseilla ja automaattisesta arvostelusta tuleva palaute tukee oppimista paremmin kuin manuaalinen palaute.
+\item Automaattinen arvostelu on tuntemattoman koodin suorittamista, mikä on aina riski.
+\item Haittaohjelmatutkimuksessa tutkitaan binäärimuotoisia haitallisia ohjelmia.
+\item Mitä yhteistä on ohjelmointiharjoituksella ja haittaohjelmalla?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Tutkimuskysymykset}
+\begin{itemize}
+\item Voiko staattisella analyysillä varmistua lähdekoodin turvallisuudesta?
+\item Voiko kotitehtävätarkistimien turvallisuutta parantaa lisäämällä staattista analyysiä?
+\item Mikä on kurssilla opetettavan ohjelmointikielen vaikutus riskeihin?
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Automaattinen arvostelu}
+\begin{itemize}
+\item Hyvin rajattuja ongelmia, jotka palauttavat aina saman tuloksen samalla syötteellä.
+\item Sopivat parhaiten peruskursseille, joissa sovelletaan vähemmän kuin myöhemmissä opinnoissa.
+\item Toimintaperiaate: Käännetään, suoritetaan ja annetaan pisteet sekä palaute opiskelijalle.
+\item Osa kurssinhallintajärjestelmää, jolla on omat turvallisuushaasteensa.
+\item Tässä kandidaatintyössä keskitytään tarkistimeen.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Tarkistimet}
+\begin{itemize}
+\item Työssä tutkitaan kahta tarkistinta \textsc{Scheme-robo}a ja Goblin-järjestelmään kuuluvaa EXPACA:a.
+\item Molemmat on kehitetty Teknisessä korkeakoulussa.
+\item Toteutukset poikkeavat merkittävästi:
+\begin{itemize}
+\item \textsc{Scheme-robo} on metasirkulaarinen tulkki.
+\item EXPACA antaa ohjelmalle syötettä ja tarkkailee sen tulostetta ja on siten kieliriippumaton.
+\item \textsc{Scheme-robo} määrittelee vain osan Scheme-kielestä ja EXPACA on suunniteltu täysimittaisten ohjelmien testaamiseen.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Tarkistimen turvallisuusriskit}
+\begin{itemize}
+\item Käytännössä ohjelmoinnin keskimääräisen peruskurssin opiskelijan taidot eivät riitä tietomurtoihin.
+\item Tehtävät ovat helpompia kuin järjestelmän väärinkäyttö.
+\item Järjestelmässä esiinnytään omilla tiedoilla.
+\item Todennäköisin uhka tietoturvalle on ohjelmointivirhe.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Yleisimmät turvallisuusriskit}
+\begin{itemize}
+\item Puskurin ylivuodot ovat yleisimpä haavoittuvuuden syitä.
+\item Ohjelman suorituksen kaappaamisen jälkeen voidaan yrittää päästä pidemmälle järjestelmän muiden haavoittuvuuksien kautta.
+\item C- ja C++ -kielten semantiikka ja kääntäjien toteutukset tekevät muistin käsittelystä helppoa ja ennustettavaa.
+\item Dynaamisissa kielissä tulkki tai kääntäjä huolehtii muistista eikä sen käsittelyyn ole välttämättä toimintoja.
+\item Funktionaalisissa kielissä muuttujan käsite on hieman erilainen eikä ongelmaa välttämättä ole määritelty.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{\textsc{Scheme-robo}}
+\begin{itemize}
+\item Turvallisuusongelmat on rajattu ansiokkaasti tarkistimen ulkopuolelle:
+\begin{itemize}
+\item Funktionaalinen ohjelmointikieli rajaa yleisimmät virheet.
+\item Kielen tyypillisimmät turvallisuusriskit on tulkissa jätetty määrittelemättä.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Koodin tutkiminen}
+\begin{itemize}
+\item Suorittamatta koodia -- staattinen analyysi
+\item Suorituksen aikana -- haittaohjelmatutkimusta
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Staattinen analyysi}
+
+\begin{itemize}
+
+\item Yleensä monipuoliset analysaattorit tuottavat paljon hälytyksiä.
+\item Hälytykset ovat usein vääriä -- signaali hukkuu kohinaan.
+\item Olennaisen etsiminen vääristä hälytyksistä ei toimi hyvin automaatiossa.
+\item Väärät hälytykset eivät tue myöskään oppimista.
+\item Esimerkiksi päättyvyysongelma tekee käytöstä vaikeaa.
+\item Analysaattorin saa kuluttamalla aikaa tekemällä koodin tulkinnasta vaikeasti ratkeavaa.
+\item Tarkistimessa tämä on kuitenkin helppoa havaita.
+
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Sopivat analysaattorit}
+
+\begin{itemize}
+\item Kirjallisuustutkimuksella löytyi kaksi lupaavaa analysaattoria.
+\item Pscan etsii \texttt{printf}-tyyppisten kutsujen muotoiluparametrien riskialtista käyttöä.
+\item Esimerkiksi: \texttt{sprintf(output, text)} vaarallista, \texttt{sprintf(output, "\%s", text)}
+\item UNO etsii alustamattomien muuttujien käyttöä, nollaosoittimeen viittauksia ja puskurin rajojen ulkopuolista viittaamista.
+\item Eivät kata kaikkia mahdollisia ongelmia.
+\item Rajaavat kuitenkin merkityksellisen joukon helposti vahingossa tapahtuvia virheitä.
+\item Parantavat opiskelijalle tulevaa palautetta.
+\item ''Segmentation fault'' vastaan ''Virhe x rivillä y''
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{Käyttö Goblinissa}
+
+\begin{itemize}
+\item EXPACA ei tue sellaisenaan lisätyökaluja.
+\item Se kuitenkin tutkii ajettavan koodin konsolitulostetta ja analysaattorit ovat komentorivityökaluja.
+\item Jos opiskelijan ohjelma ajetaan komentojonon osana, voidaan lähdekoodi esikäsitellä välissä.
+\item Virhetilanteessa analysaattorin tuloste näytetään opiskelijalle sellaisenaan.
+\item Jos odotettua tulostetta ei tule, pisteitä tulee nolla. Hienostuneemman arvostelun toteuttaminen pitää tehdä erikseen.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{itemize}
+\item Opetettava ohjelmointikieli vaikuttaa riskeihin merkittävästi.
+\item Staattiset analysaattorit eivät yleensä sovi automaattiseen arvosteluun väärien hälytysten takia.
+\item Analyysillä voidaan kuitenkin rajata ilmiselvimpiä ongelmia pois.
+\item Tärkein etu on opiskelijalle tuleva täsmällisempi palaute.
+\item Turvallisuusongelmat ratkeavat paremmin eristämällä järjestelmä hyvin tai toteuttamalla rajoitettuja kieliä.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

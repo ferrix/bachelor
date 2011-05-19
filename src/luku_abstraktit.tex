@@ -9,24 +9,26 @@
 Käytännön harjoittelulla on merkittävä rooli ohjelmoinnin opetuksessa ja
 kurssit ovat usein suuria. Automaattisella arvostelulla on tässä suuri
 oppimista tehostava vaikutus. Toisaalta tuntemattoman ohjelmakoodin
-suorittaminen on aina riski. Tämä työ tutkii kahta TKK:lla kehitettyä
-kotitehtävätarkistinta turvallisuusnäkökulmasta ja selvittää, voiko staattista
-analyysiä lisäämällä parantaa näiden turvallisuutta. Lisäksi tutkitaan
-opetettavan ohjelmointikielen vaikutusta tarkistimeen liittyviin riskeihin.
+suorittaminen on aina riski. Tämä työ tutkii kahta Teknisellä korkeakoululla
+kehitettyä kotitehtävätarkistinta turvallisuusnäkökulmasta ja selvittää, voiko
+staattista analyysiä lisäämällä parantaa näiden turvallisuutta. Lisäksi
+tutkitaan opetettavan ohjelmointikielen vaikutusta tarkistimeen liittyviin
+riskeihin.
 
-TKK:lla kehitetyt tarkistimet EXPACA ja {\scmrobo} ovat lähestymistavoiltaan
-hyvin erilaisia. Edellinen suorittaa käännettyä ohjelmaa virtuaalikonsolissa
-ja jälkimmäinen suorittaa Scheme-proseduuria metasirkulaarisessa tulkissa.
-{\scmrobo} on onnistuneesti rajannut kielen riskialttiit ominaisuudet pois
-eikä siinä siksi ole ilmeisiä turvallisuusriskejä. EXPACA suorittaa
-täysimittaisia ohjelmia, jotka on toteutettu virhealttiilla kielillä. Tämän
-takia staattisen analyysin lisäämisestä tarkistusprosessiin voisi olla hyötyä.
+Teknisellä korkeakoululla kehitetyt tarkistimet EXPACA ja {\scmrobo} ovat
+lähestymistavoiltaan hyvin erilaisia. Edellinen suorittaa käännettyä ohjelmaa
+virtuaalikonsolissa ja jälkimmäinen suorittaa Scheme-proseduuria
+metasirkulaarisessa tulkissa. {\scmrobo} on onnistuneesti rajannut kielen
+riskialttiit ominaisuudet pois eikä siinä siksi ole ilmeisiä
+turvallisuusriskejä. EXPACA suorittaa täysimittaisia ohjelmia, jotka on
+toteutettu virhealttiilla kielillä. Tämän takia staattisen analyysin
+lisäämisestä tarkistusprosessiin voisi olla hyötyä.
 
 Staattiset analysaattorit antavat yleisesti ottaen niin paljon vääriä
 hälytyksiä, ettei niiden käyttö automaattisessa arvostelussa ole mielekästä.
 Pscan ja UNO ovat analysaattoreita, jotka havaitsevat yhteensä neljän tyyppisiä
 ongelmia. Ne tuottavat keskimääräistä vähemmän vääriä hälytyksiä ja soveltuvat
-mahdollisesti EXPACAn laajentamiseen.
+mahdollisesti EXPACA:n laajentamiseen.
 
 Työssä havaitaan myös, että opetettavalla ohjelmointikielellä ja staattisen
 analyysin opetuksella voi olla suuri merkitys opiskelijoiden tietämykselle

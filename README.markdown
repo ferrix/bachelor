@@ -1,4 +1,5 @@
-= Ohjelmointiharjoitusten turvallisuuden automaattinen arviointi =
+Ohjelmointiharjoitusten turvallisuuden automaattinen arviointi
+==============================================================
 
 Kandidaatintyö
 

@@ -4,52 +4,67 @@
 \section{Johdanto}
 \label{sec:johd}
 
-Ohjelmoinnilla on olennainen osa tietotekniikan opetuksessa ja ohjelmoinnin
-opiskelussa käytännön harjoittelulla on merkittävä rooli. Ripeästi saatavalla
+Ohjelmoinnilla on olennainen osa tietotekniikan opetuksessa ja käytännön
+harjoittelulla on ohjelmoinnin opiskelussa merkittävä rooli. Ripeästi saatavalla
 palautteella on oppimista tehostava vaikutus. Kurssit ovat monesti, esimerkiksi
-TKK:lla, osallistujamääriltään suuria. Tehtävien arvosteleminen tehokkaasti
-käsin kokonaisen vuosikurssin kokoisilla kursseilla on käytännössä mahdotonta.
-Automaattisen arvostelun edut ovat myös merkittävimpiä opintojen alussa,
-jolloin soveltavien harjoitusten osuus on pienempi \citep{carter2003shall}.
-Näistä syistä monet opettajat, yliopistot ja yhtiöt ovat kehittäneet työkaluja,
-joilla opiskelijat voivat tarkistuttaa ohjelmointiharjoituksensa automaattisesti,
-saada palautetta ja kurssin suorittamiseksi tarvittavia pisteitä.
+Teknisellä korkeakoululla (TKK), osallistujamääriltään suuria. Tehtävien
+arvosteleminen tehokkaasti käsin kokonaisen vuosikurssin kokoisilla kursseilla
+on käytännössä mahdotonta. Automaattisen arvostelun edut ovat myös
+merkittävimpiä opintojen alussa, jolloin soveltavien harjoitusten osuus on
+pienempi \citep{carter2003shall}. Näistä syistä monet opettajat, yliopistot ja
+yhtiöt ovat kehittäneet työkaluja, joilla opiskelijat voivat tarkistuttaa
+ohjelmointiharjoituksensa automaattisesti, saada palautetta ja kurssin
+suorittamiseksi tarvittavia pisteitä. Tässä työssä tutkitaan tarkistimia,
+jotka vertaavat opiskelijan ohjelman toimintaa esimerkkiohjelmaan.
 
 Tuntemattoman ohjelmakoodin suorittaminen on aina turvallisuusriski ja se
 pitää ottaa huomioon ohjelmointiharjoitusten tarkistimissa. Parhaassa
 tapauksessa riittävän tarkasti havaittu turvallisuusriski tarjoaa
 opiskelijalle mahdollisuuden ymmärtää ja oppia tekemästään virheestä
-turvallisessa ympäristössä ennen työelämään siirtymistä. Ohjelmointivirheiden
-merkitys on kasvanut samaan aikaan tietotekniikan arkipäiväistymisen myötä.
+turvallisessa ympäristössä ennen työelämään siirtymistä. Tietotekniikka on
+arkipäiväistynyt ja sen merkitys on lisääntynyt. Ohjelmointivirheiden riskit
+ovat samalla kasvaneet, kun useammat yhteiskunnan toiminnot luottavat ohjelmiin.
 Turvallinen ohjelmointitapa on helpompi oppia, jos ensimmäisillä
 ohjelmointikursseilla saa palautetta riskialttiin koodin kirjoittamisesta.
 Pahimmassa tapauksessa huonosti toteutettu järjestelmä päätyy koko kurssin
 suorittamista haittaavaan virhetilaan opiskelijan tahattoman virheen takia.
 
+Haittaohjelmatutkimuksessa tutkitaan binäärimuotoisia ohjelmia ja pyritään
+tunnistamaan niiden aikeet, ennen kuin ne pääsevät haittaamaan järjestelmän
+toimintaa ja turvallisuutta. Haittaohjelmia tutkitaan staattisella ja
+dynaamisella analyysillä, mutta haitallisia ohjelmia ei yleensä päästä
+tutkimaan niiden lähdekoodimuodossa. Ohjelmointiharjoitusten tarkistimille
+annetaan syötteenä lähdekoodi, josta saatetaan kääntää mahdollisesti
+haitallinen ohjelma. Miten haittaohjelma voitaisiin tunnistaa lähdekoodista?
+
 Tämä kandidaatintyö tutkii tuntemattoman lähdekoodin staattista
 analyysiä tapana arvioida, onko ohjelman suorittaminen turvallista.
 Tutkimuksen tavoitteena on kartoittaa ohjelmointitehtävien automaattisten
 tarkistimien toteutukseen liittyviä turvallisuushaasteita ja löytää
-ratkaisuja kirjallisuudesta. Tämän työn vastaa seuraaviin tutkimuskysymyksiin:
-
-\begin{itemize}
-\item Voiko staattisella analyysillä varmistua lähdekoodin turvallisuudesta?
-\item Voiko kotitehtävätarkistimien turvallisuutta parantaa lisäämällä staattista analyysiä?
-\item Mikä on kurssilla opetettavan ohjelmointikielen vaikutus riskeihin?
-\end{itemize}
+ratkaisuja kirjallisuudesta.
 
 Tässä luvussa määritellään työn tavoite ja rajataan tutkittava ongelma,
 toisessa luvussa kerrotaan käytetystä aineistosta sekä tutkimusmenetelmistä,
 kolmannessa luvussa käydään läpi kirjallisuustutkimuksessa tehdyt havainnot
 ja viimeisessä luvussa muodostetaan tulosten pohjalta johtopäätöksiä.
 
+Tämän työ vastaa seuraaviin tutkimuskysymyksiin:
+
+\begin{itemize}
+\item Voiko staattisella analyysillä varmistua lähdekoodin turvallisuudesta?
+\item Voiko kotitehtävätarkistimien turvallisuutta parantaa lisäämällä
+staattista analyysiä?
+\item Mikä on kurssilla opetettavan ohjelmointikielen vaikutus
+turvallisuusriskeihin?
+\end{itemize}
+
 \subsection{Tavoite}
 
 Työn tavoitteena on löytää menetelmiä, jolla voidaan vahvistaa
 ohjelmointiharjoitusten arvosteluun käytettäviä työkalujen turvallisuutta,
 jotta ne selviäisivät tahattomasti ja tahallisesti tehdyistä hyökkäyksistä
-eheinä ja toimintakykyisinä. Työssä tutkitaan kahta TKK:lla käytettyä
-tarkistinta ja vertaillaan niiden turvallisuusominaisuuksia.
+eheinä ja toimintakykyisinä. Työssä tutkitaan kahta Teknillisellä korkeakoululla
+käytettyä tarkistinta ja vertaillaan niiden turvallisuusominaisuuksia.
 Tämän jälkeen tutkitaan muutamia järjestelmien vaatimuksiin sopivia ja
 luotettavia staattisen analyysin työkaluja. Järjestelmän olennaisia vaatimuksia
 ovat nopea palaute, väärien hälytysten määrän minimointi ja käytettävyys.
@@ -58,7 +73,7 @@ Turvallisuuden lisääminen ei saa merkittävästi haitata järjestelmän toimin
 Tarkistin on ohjelma, joka suorittaa opiskelijalta saadun harjoituksen,
 testaa sen toimintaa ja pisteyttää tehtävän. Yleensä tarkistin on osa suurempaa
 kurssinhallintajärjestelmää, joka huolehtii tulosten kirjaamisesta,
-opiskelijoiden autentikoinnista ja muista kurssin järjestelyihin liittyvistä
+opiskelijoiden tunnistamisesta ja muista kurssin järjestelyihin liittyvistä
 asioista. Tässä työssä keskitytään ainoastaan tarkistimeen ja sen
 turvallisuuteen.
 
@@ -102,6 +117,12 @@ vaikuta arvostelutietojen eheyteen. Muita turvallisuuteen liittyviä teknisiä
 valintoja ovat esimerkiksi käytettyjen kirjastojen toteutuksen turvallisuus,
 arkkitehtuurin luotettavuus ja käytetyn ohjelmointikielen tyypilliset riskit.
 
+Tutkittavat tarkistimet vertaavat opiskelijan ohjelman toimintaa
+opetushenkilökunnan toteuttamaan malliohjelmaan. Tulokset ovat yleistettävissä
+tarkistimiin, jotka vertaavat ohjelmaa tunnettuun joukkoon syötteitä ja
+tulosteita. Myös muunlaisia tarkistimia on olemassa, mutta niiden tutkiminen ei
+ole tämän työn tavoitteiden kannalta tarpeellista.
+
 Tämä työ olettaa tarkistimeen kohdistuvien riskien olevan pääasiassa
 tahattomia ohjelmointivirheitä. Todelliset riskit ovat varmasti
 monitahoisempia, mutta tarkempi riskianalyysi ei kuulu tämän työn alueeseen.
@@ -111,10 +132,11 @@ soveltuvat parhaiten peruskursseille, joilla on vähemmän soveltavaa
 harjoittelua. Opiskelijoilla ei pitäisi olla syitä tai tarpeellisia kykyjä
 järjestelmän murtamiseen. Kursseille voi osallistua kokeneempia ohjelmoijia,
 mutta he menestyvät todennäköisesti keskimääräistä paremmin
-\citep{hagan2000does}, jolloin pyrkimys läpäistä kurssi vähentää
-todennäköisesti motivaatiota häiritä järjestelmää tahallisesti.
+\citep{hagan2000does}. Myös heille tehtävien ratkaiseminen on helpompaa kuin
+tietojärjestelmän murtaminen. Omalla henkilöllisyydellä esiintyminen ja tutkinto
+tavoitteena vähentävät todennäköisesti motivaatiota rikoksiin.
 
-\subsection{Rajaus}
+\subsection{Rajaukset}
 
 Ohjelmointiharjoituksien ohjelmakoodia voidaan arvioida ennen ja jälkeen
 käännöksen. Nykyaikaiset haittaohjelmat pyrkivät vaikeuttamaan koodin
@@ -125,11 +147,11 @@ jälkeen.
 
 Ohjelmointitehtävien arvosteluun liittyy myös vilpin riski. Harjoitustehtäviä
 voidaan kopioida eikä etenkään etäopetuksen tapauksessa tehtävien tekijän
-henkilöllisyydestä voida olla täysin varmoja. \citep{carter2003shall} Tämä työ
+henkilöllisyydestä voida olla täysin varmoja \citep{carter2003shall}. Tämä työ
 ei kuitenkaan etsi ratkaisua näihin ongelmiin. 
 
 Koodin suorittaminen virtualisoiduissa tai emuloiduissa ympäristöissä on
-vaativa ongelma-alue \citep{kesti2010}. Tämä työ ei ota kantaa virtualisointiin
+vaativa on\-gel\-ma-alue \citep{kesti2010}. Tämä työ ei ota kantaa virtualisointiin
 liittyviin ongelmiin, mutta on silti suositeltavaa ajaa kotitehtävätarkistinta
 rajoitetussa ympäristössä.
 
@@ -138,16 +160,16 @@ rajoitetussa ympäristössä.
 \section{Aineisto ja menetelmät}
 \label{sec:aineisto}
 
-Tässä kandidaatintyössä tutustutaan ensin kahteen TKK:lla käytettyyn
-tarkistusjärjestelmään: {\scmrobo}on ja Gobliniin. Järjestelmiä tarkastellaan
-niistä kirjoitetun tieteellisen kirjallisuuden avulla. Tarkistimien lisäksi
-tutustutaan yleisimpiin ohjelmistoihin liittyviin turvallisuusuhkiin.
-Tarkistimia tutkimalla perehdytään myös kurssilla opetettavaksi valitun
-ohjelmointikielen turvallisuusvaikutukseen.
-
-Viimeiseksi kartoitetaan ilmaiseksi saatavia staattisen
+Tässä kandidaatintyössä tutustutaan ensin kahteen Teknisellä korkeakoululla
+käytettyyn tarkistusjärjestelmään: {\scmrobo}on ja Goblinin tarkistimeen
+EXPACA:an. Järjestelmiä tarkastellaan niistä kirjoitetun tieteellisen
+kirjallisuuden avulla. Tarkistimien lisäksi tutustutaan yleisimpiin
+ohjelmistoihin liittyviin turvallisuusuhkiin. Tarkistimia tutkimalla
+perehdytään myös kurssilla opetettavaksi valitun ohjelmointikielen
+turvallisuusvaikutukseen.Viimeiseksi kartoitetaan ilmaiseksi saatavia staattisen
 analyysin työkaluja, joilla voitaisiin mahdollisesti täydentää valittujen tai
 muiden tarkistimien turvallisuutta tai opiskelijalle annettavaa palautetta.
+Työn tutkimusmenetelmä on kirjallisuustutkimus.
 
 \subsection{Tarkistimet}
 
@@ -156,7 +178,7 @@ Valitsin ne lähempään tarkasteluun oman käyttökokemukseni
 perusteella. Lisäksi ne edustavat kahta hyvin erilaista lähestymistapaa ja
 antavat siksi tarpeeksi laajan kuvan käsiteltävästä ongelma-alueesta.
 
-\subsubsection{Goblin}
+\subsubsection{EXPACA}
 
 Goblin on TKK:lla kehitetty WWW-pohjainen kurssinhallintajärjestelmä.
 Alunperin se kehitettiin C-kielisten ohjelmointiharjoitusten arvosteluun
@@ -164,36 +186,33 @@ ja sitä on sittemmin käytetty ainakin C++-, Java- ja XML-harjoitusten
 arvostelussa. Sen mukana toimitetaan EXPACA-tarkistin, jota hallitaan
 XML-pohjaisella konfigurointikielellä. EXPACA kutsuu ensin kääntäjää ja
 suorittaa ohjelmakoodin antamalla sille komentoja virtuaalikonsolilla ja
-lukemalla sen syötettä. \citep{Hiisila2005}
+lukemalla sen syötettä. Goblin-järjestelmä ei analysoi koodia muuten kuin
+kääntämisen muodossa. \citep{Hiisila2005}
 
-\citet{Hiisila2005} mainitsee diplomityössään, ettei Goblin analysoi koodia muuten
-kuin kääntämisen muodossa.
-
-\subsubsection{\scmrobo}
+\subsubsection{\textsc{Scheme-robo}}
 
 {\scmrobo} on TKK:lla kehitetty Schemellä toteutettu tarkistin, joka pohjautuu
 metasirkulaariseen tulkkiin \citep{sicp}. Turvallisen hiekkalaatikon luomiseksi
 Scheme-kielestä on rajattu pois tiedostojen käsittelytoiminnot
-\citep{saikkonen2001fully} sekä eval-komento, jolla
+sekä eval-komento, jolla
 voisi suorittaa mielivaltaista koodia ja siten vapautua hiekkalaatikosta.
 Lisäksi tiettyjen komentojen käyttöä voidaan rajata tehtäväkohtaisesti.
-\citep{liljasaikkonen}
+\citep{saikkonen2001fully} \citep{liljasaikkonen}
 
-Eri lähteissä {\scmrobo} määritellään sekä TRAKLA-järjestelmään \citep{trakla}
+Eri lähteissä {\scmrobo} määritellään sekä TRAKLA-järjestelmään 
 tukeutuvaksi kokonaiseksi kurssinhallintajärjestelmäksi
 \citep{saikkonen2001fully} että kotisivullaan tarkistimeksi
 \citep{liljasaikkonen}. Tässä työssä viittaan selkeyden vuoksi pelkkään
-tarkistimeen.
+tarkistimeen. TRAKLA on TKK:n tietorakennekurssia varten kehitetty
+kurssinhallintajärjestelmä \citep{trakla}.
 
 Kokonaisten ohjelmien sijaan {\scmrobo} ottaa syötteekseen yksittäisiä
-Scheme-funktioita, joiden paluuarvon perusteella harjoitukset pisteytetään.
+Scheme-proseduureja, joiden paluuarvon perusteella harjoitukset pisteytetään.
 Tällä tavoin vältytään palautteen muotoilun vaikutukselta arvosteluun sekä
-mahdollisilta jäsentelijän (engl. parser) toteutukseen liittyviltä riskeiltä.
-\citep{saikkonen2001fully}
-
-{\scmrobo} voi myös verrata ohjelman rakennetta opettajan antamaan
-antamaan malliirakenteeseen ja hylätä tehtäviä niistä kutsuttavien komentojen
-nimien perusteella. \citep{saikkonen2001fully} Nämä eivät ole
+mahdollisilta jäsentelijän (\emph{englanniksi parser}) toteutukseen liittyviltä
+riskeiltä. {\scmrobo} voi myös verrata ohjelman rakennetta opettajan antamaan
+mallirakenteeseen ja hylätä tehtäviä niistä kutsuttavien komentojen nimien
+perusteella \citep{saikkonen2001fully}. Viimeksi mainitut eivät ole
 turvallisuusominaisuuksia, mutta niitä voitaisiin käyttää sellaisina pienin
 muutoksin.
 
@@ -215,9 +234,9 @@ Samat kielet ovat semantiikastaan johtuen herkkiä taulukon indeksien
 käyttämiselle mielivaltaiseeen muistialueeseen viittaamiseen. Esimerkiksi
 Ada ja Java ratkaisevat tämän ongelman epäsuoralla ajonaikaisella
 tarkituksella. Lisäksi on monia muita ongelmia, jotka ovat tyypillisiä vain
-C- ja C++-koodissa. Funktionaalisten ohjelmointikielen suunnittelu on
+C- ja C++-koodissa. Funktionaalisten ohjelmointikielten suunnittelu on
 merkittävästi erilaista: Funktioilla ei ole sivuvaikutuksia, indekstointia
-ei pääosin käytetä eikä muistiin viitata suoraan. \citet{tevis2004methods}
+ei pääosin käytetä eikä muistiin viitata suoraan. \citep{tevis2004methods}
 
 Monet dynaamisesti muistia käsittelevät ja tilattomat funktionaaliset kielet
 eivät määrittele suoraan muistia käsittelevää toiminnallisuutta, joten niissä
@@ -243,7 +262,7 @@ Ohjelmakoodin staattiseen analyysiin liittyy useita vaikeasti ratkeavia
 ongelmia. Esimerkiksi ei ole olemassa tunnettua yleisesti pätevää
 tapaa osoittaa ohjelmallisesti, päättyykö ohjelman suoritus koskaan. Kuitenkin
 automaattisesti tarkistettavat ohjelmointiharjoitukset ovat yleensä ratkaisuja
-hyvin rajattuun ja tunnettuun ohjelmointiongelmaan. Lisäksi Ohjelman pitkäksi
+hyvin rajattuun ja tunnettuun ohjelmointiongelmaan. Lisäksi ohjelman pitkäksi
 venyvä suoritusaika on riittävä peruste ratkaisun hylkäämiselle.
 
 Monet ohjelmakoodin staattiseen analyysiin liittyvät ongelmat ovat ihmiselle
@@ -269,12 +288,15 @@ ei tulisi käyttää. Esimerkiksi {\scmrobo} rajoittaa Schemen kielioppia
 nimenomaan turvallisuuteen perustuen.
 
 Toisaalta matalan tason kielillä voidaan suorittaa koodia tavoilla, jotka
-eivät paljastu tekstihaulla. Näitä tekniikoita käytetään muun muassa virusten
-aikeiden peittelyyn, jotta ne eivät jäisi kiinni virustorjunnassa.
-\citet{moser2007limits} esittelevät tutkimuksessaan monimutkaistustekniikoita (engl. obfuscation),
-joilla staatinen analysaattori voidaan ohjata ratkaisemaan NP-täydellisiä
-ongelmia. Tutkimus käsittelee staattisen analyysin harhauttamiseen toimivia
-tekniikoita virustorjuntaohjelmistojen perspektiivistä.
+eivät paljastu tekstihaulla. Funktiohin voidaan viitata nimien sijasta
+osoitteilla, funktion nimi esittää ohjelmakoodin joukossa sotkettuna
+tai kutsua vaihtoehtoista toteutusta. Näitä tekniikoita käytetään muun
+muassa virusten aikeiden peittelyyn, jotta ne eivät jäisi kiinni
+virustorjunnassa. \citet{moser2007limits} esittelevät tutkimuksessaan
+monimutkaistustekniikoita (\emph{englanniksi obfuscation}), joilla staatinen
+analysaattori voidaan ohjata ratkaisemaan NP-täydellisiä ongelmia. Tutkimus
+käsittelee staattisen analyysin harhauttamiseen toimivia tekniikoita
+virustorjuntaohjelmistojen perspektiivistä.
 
 Vaikeisiin ongelmiin perustuva monimutkaistaminen ei kuitenkaan riipu
 käytettävästä kielestä, jolloin ne toimivat yhtä hyvin esimerkiksi 
@@ -309,61 +331,130 @@ sillä voisi olla arvoa opiskelijoiden oppimisen tukena.
 
 Pscan on avoimen lähdekoodin työkalu, jolla voidaan etsiä riskialttiita
 printf-tyyppisten funktioden kutsuja lähdekoodista.
-Työkalu oli \citet{heffley2004can} tutkimuksen perusteella
-toiminnaltaan hyvin rajattu ja siitä syystä tuottaa vertailujoukossaan vähiten
-vääriä hälytyksiä. Tutkituissa tapauksissa kaikki löydäkset eivät olleet
+\citet{heffley2004can} totesivat tutkimuksessaan työkalun olevan
+toiminnaltaan hyvin rajattu ja siksi se tuottaa vertailujoukossaan vähiten
+vääriä hälytyksiä. Tutkituissa tapauksissa kaikki löydökset eivät olleet
 hyödynnettävissä hyökkäyksessä, mutta osoittivat kuitenkin vaarallista
 ohjelmointitapaa. Toisaalta myös ?-operaattori esti ohjelmaa huomaamasta
-oikeita haavoittuvuuksia.
+oikeita haavoittuvuuksia. Pscan etsii seuraavanlaisia koodirivejä:
 
-sprintf(buffer, variable); Bad! Possible security breach!\\
-sprintf(buffer, "\%s", variable); Ok
+\begin{verbatim}
+sprintf(puskuri, muuttuja);        // Varoitus
+sprintf(puskuri, "%s", muuttuja);  // Oikein
+sprintf(puskuri, totuusarvo ? muuttuja1 : muuttuja2) 
+\end{verbatim}
+
+Mikäli ensimmäisen tapauksen muuttuja tulee tarkistamattomana vihamieliseltä
+käyttäjältä, voi siihen sisällyttää muotoilumerkintöjä. Ne voidaan
+mahdollisesti korvata käyttäjän määräämillä arvoilla ohjelman myöhemmässä
+vaiheessa. Jälkimmäisessä tapauksessa tämä ei ole mahdollista. Viimeinen rivi on
+esimerkki virheestä, jota Pscan ei huomaa. \citep{heffley2004can} Työkalu ei
+yritä tulkita koodin toimintaa, vaan keskittyy löytämään yksinkertaisimpia
+ongelmatapauksia.
 
 \subsubsection{UNO}
 
 UNO on Bell Labsissa kehitetty työkalu, joka keskittyy nimensä mukaisesti kolmen
 ongelman havaitsemiseen: alustamattoman muuttujan käyttö (Use of uninitiated
-variable), nollaosoittimeen viittaaminen (Nil-pointer references) ja taulukon
-ulkopuolinen indeksointi (Out-of-bounds array indexing). "Sen
-suunnittelulähtökohtana on ollut korkea signaali--kohinasuhde." Tällä
-tarkoitetaan hyödyllisten varoitusten määrän maksimointia.
-Tämän lisäksi UNO on myös helposti laajennettavissa.
+variable), nollaosoittimeen viittaaminen (Nil-pointer dereferences) ja taulukon
+ulkopuolinen indeksointi (Out-of-bounds array indexing). Tekijänsä Holzmannin
+mukaan sen suunnittelulähtökohtana on ollut korkea signaali--kohinasuhde. Tällä
+tarkoitetaan hyödyllisten varoitusten osuuden maksimointia ja väärien
+hälytysten välttämistä. Tämän lisäksi UNO on helposti laajennettavissa.
 \citep{tevis2004methods} \citep{uno}
+
+Alustamattomia muuttujia käytettäessä samaa muistialuetta on voitu käyttää
+aiemmin ohjelmaa suoritettaessa. Tämä voi johtaa siihen, että käyttäjälle
+näytetään tietoa, jota tämän ei kuulu nähdä. Ohjelman toiminta saattaa myös
+muuttua odottamattomaksi, jos lasketaan väärillä luvuilla, joiden odotetaan
+olevan alustettuja. UNO havaitsee tämän tyyppisen ongelman seuraavasta
+esimerkistä:
+
+\begin{verbatim}
+#include <stdio.h>
+
+int main(int argc, char** argv) {
+    int i;
+    printf("Alustamaton i: %d", i);
+}
+
+/* Tulostaa esimerkiksi "Alustamaton i: 33520" */
+\end{verbatim}
+
+Nollaosoittimeen viittaaminen tarkoittaa alustamattoman osoittimen käyttöä ja
+johtaa yleensä ohjelman kaatumiseen. Kaatumista voidaan käyttää hyväksi
+palvelunestohyökkäyksissä. Liitännäisvaikutuksina se saattaa johtaa esimerkiksi
+ohjelman muistialueen tilan kirjoittamiseen levylle. Ohjelman suorituksen voi
+kaapata kirjoittamalla muistiin, johon myöhemmin viitataan alustamattomalla
+osoittimella, tai virheenkäsittelijällä, joka ajetaan tunnetun virheen
+tapahtuessa. UNO havaitsee nol\-la\-osoit\-ti\-meen viittaamisen tästä
+esimerkistä:
+
+\begin{verbatim}
+int main(int argc, char** argv) {
+    int *osoitin;
+    *osoitin = 1;
+}
+
+/* Kaatuu viestillä "Segmentation fault" */
+\end{verbatim}
+
+Taulukon rajojen ylittäminen johtaa muistin ylikirjoittamiseen. Jos
+ylikirjoitetussa muistissa on osoitin funktioon, voidaan ohjelman suoritus
+kaapata ohjaamalla suoritus muualle -- esimerkiksi ylikirjoitettuun muistiin.
+UNO havaitsee taulukon ohi kirjoituksen seuraavasta esimerkistä:
+
+\begin{verbatim}
+int main(int argc, char** argv) {
+    int b[100], c[2];
+    int i;
+    for (i=0; i < 101; i++) b[i] = 0;
+}
+
+/* Sijoittaa b:n olemattomaan indeksiin 100 arvon 0.
+   Kääntäjä saattaa tulkita tämän kirjoitukseksi taulukon c päälle. */
+\end{verbatim}
 
 % --------------------------------------------------------------------
 
 \section{Tulokset}
 \label{sec:tulos}
 
-\subsection{\scmrobo n ja Goblinin turvallisuusuhat}
+Tässä luvussa esitellään kirjallisuustutkimuksessa löytyneet tulokset.
+Ensimmäiseksi käsitellään tarkistimiin liittyviä turvallisuusuhkia,
+seuraavaksi pohditaan UNO:n ja Pscanin soveltuvuutta tarkistimien
+täydentämiseen, esitellään tapa yhdistää analysaattoreita EXPACA:an ja
+viimeiseksi arvioidaan syitä tarkistimien toteutuksessa tehtyihin
+turvallisuusvalintoihin.
+
+\subsection{\scmrobo n ja EXPACA:n turvallisuusuhat}
 
 Kirjallisuustutkimuksen perusteella {\scmrobo} on turvallisuusratkaisuiltaan
 onnistunut tarkistin. Yksi osasyy on se, ettei Schemeen liittyviä
-turvallisuusuhkia ei ole tutkittu aktiivisesti. Kieli on pääosin
-akateemisessa käytössä eikä ole siksi hyökkääjien kannalta mielenkiintoinen.
-Toisaalta kielen funktionaalisuuden takia se ei myöskään määrittele monia
-yleisemmin käytössä oleville kielille tyypillisiä ongelmia.
-Toisaalta \scmrobo n toteutuksessa on huomioitu
-eval-lauseeseen ja tiedostonkäsittelyyn liittyvät ongelmat, joiden kautta
-rajatun tulkin turvallisuus voitaisiin ohittaa helposti. Schemen vahvalla
+turvallisuusuhkia ole tutkittu aktiivisesti. Kieli on pääosin akateemisessa
+käytössä eikä ole siksi hyökkääjien kannalta mielenkiintoinen. Toisaalta kielen
+funktionaalisuuden takia se ei myöskään määrittele monia yleisemmin käytössä
+oleville kielille tyypillisiä ongelmia. Toisaalta \scmrobo n toteutuksessa on
+huomioitu eval-lauseeseen ja tiedostonkäsittelyyn liittyvät ongelmat, joiden
+kautta rajatun tulkin turvallisuus voitaisiin ohittaa helposti. Schemen vahvalla
 metasirkulaaristen tulkkien tuella on tässä merkittävä vaikutus.
 
-Goblin ei analysoi koodia staattisesti kääntäjää lukuunottamatta. Järjestelmä ei
+EXPACA ei analysoi koodia staattisesti kääntäjää lukuunottamatta. Järjestelmä ei
 sellaisenaan tue ulkoisia työkaluja. Hiisilän mukaan esimerkiksi Valgrindilla
 tuotetulla palautteella voisi kuitenkin olla opiskelijoiden oppimisen kannalta
 arvoa. EXPACA-tarkistin on toteutettu C++-kielellä, mutta Hiisilä erikseen
 mainitse, että turvallinen ohjelmointitapa olisi ollut tärkeä tekijä sen
-suunnittelussa. Turvallisuusnäkökohtana hän mainitsee, että EXPACA voidaan
+suunnittelussa. Turvallisuusnäkökohtana hän toteaa, että EXPACA voidaan
 suorittaa erillisessä hakemistorakenteessa. \citep{Hiisila2005} Tämä
 tarkoittanee chroot-ympäristöä, joista karkaamisen on todettu olevan helppoa
 \citep{Simes}. Toisaalta chroot-hakemistorakenne on pienellä vaivalla
 siirrettävissä virtualisoituun tai emuloituun ympäristöön. 
 
-Goblin ei modulaarisella suunnittelullaan ole herkkä hyökkäyksille, mutta sen
-ongelmat liittyvät siihen, että sillä ajettavat harjoitustehtävät on
-kirjoitettu täysimittaisella ohjelmointikielellä, joiden toiminnallisuutta ei
-ole rajoitettu. Tästä johtuen ohjelman suoritus täytyy eristää riittävästi
-muusta ympäristöstä.
+Goblin-järjestelmä ei modulaarisella suunnittelullaan ole herkkä hyökkäyksille,
+mutta sillä ajettavat harjoitustehtävät on kirjoitettu täysimittaisilla
+ohjelmointikielillä. Niiden toiminnallisuutta ei ole rajattu, mikä voi
+aiheuttaa turvallisuusongelmia. Tästä johtuen ohjelman suoritus täytyy eristää
+riittävästi muusta ympäristöstä.
 
 \subsection{Analyysityökalujen käytettävyys}
 
@@ -373,13 +464,14 @@ luotettavampia. Tämän lisäksi UNO on helposti laajennettavissa. Toisaalta
 laajentamalla saatetaan aiheuttaa vain lisää vääriä hälytyksiä. Molemmat ovat
 saatavissa lähdekoodeineen ilmaiseksi, mikä helpottaa niiden käyttöönottoa.
 
-Tämän työn puitteissa kumpaakaan työkalua ei ole kokeiltu käytännössä, joten
-myöskään niiden käytännöllisyydestä kotitehtävätarkistimessa ei ole riittävää
-näyttöä. Toisaalta työkalut ovat yksinkertaisia käyttää ja paljastavat yleisiä
-ja vakavia ongelmia. Vaikka ne eivät sopisikaan tarkistimen kanssa
-käytettäviksi, niiden käytön opettaminen ohjelmoinnin peruskursseilla saattaisi
-auttaa opiskelijoita ymmärtämään turvallista ohjelmointitapaa ja turvallisuuden
-merkitystä opintojen alusta vaiheesta alkaen.
+Tämän työn puitteissa kumpaakaan työkalua ei ole kokeiltu käytännössä
+esimerkkikoodia lukuunottamatta, joten myöskään niiden käytännöllisyydestä
+kotitehtävätarkistimessa ei ole riittävää näyttöä. Toisaalta työkalut ovat
+yksinkertaisia käyttää ja paljastavat yleisiä ja vakavia ongelmia. Vaikka ne
+eivät sopisikaan tarkistimen kanssa käytettäviksi, niiden käytön opettaminen
+ohjelmoinnin peruskursseilla saattaisi auttaa opiskelijoita ymmärtämään
+turvallista ohjelmointitapaa ja turvallisuuden merkitystä opintojen alusta
+vaiheesta alkaen.
 
 Koska molemmat ohjelmat ovat komentorivityökaluja, niitä pitäisi voida käyttää
 myös rinnakkain. Työkalujen havainnot eivät ole päällekäisiä, joten niitä
@@ -388,9 +480,9 @@ varmistaa, että niiden tunnistamia virheitä sisältävää koodia ei koskaan a
 tarkistimessa. Tällä tavalla ne tekevät tarkistimesta hieman turvallisemman,
 vaikka eivät takaakaan täydellistä tulosta.
 
-\subsection{Goblinin kehitysmahdollisuudet}
+\subsection{EXPACA:n kehitysmahdollisuudet}
 
-Lisäämällä EXPACAan mahdollisuus ajaa ulkoisia työkaluja ennen koodin
+Lisäämällä EXPACA:an mahdollisuus ajaa ulkoisia työkaluja ennen koodin
 kääntämistä, voitaisiin koodille tehdä turvallisuusanalyysi ennen sen
 suorittamista. Kirjallisuuden perusteella analyysi voitaisiin tehdä Pscanilla,
 UNO:lla tai molemmilla peräkkäin. Tällöin olisi kuitenkin huomioitava, että
@@ -401,13 +493,13 @@ analysaattoritukea toteutettaessa.
 Sekä Pscan että UNO tulostavat ohjelmasta löytyvät virheet virtuaalikonsolille,
 jolloin niiden antamalla palautteella voitaisiin helposti vaikuttaa arvosteluun
 ja palautteena saatu tulos voitaisiin ohjata suoraan opiskelijalle. Teoriassa
-helpoin tapa toteuttaa tällainen toiminnallisuus olisi muuttaa EXPACAn
+helpoin tapa toteuttaa tällainen toiminnallisuus olisi muuttaa EXPACA:n
 konfiguraatiota siten, että käännetyn ohjelman sijasta ajettaisiin komentojono,
 joka analysoi lähdekoodin ja suorittaa vasta sen jälkeen itse ohjelman. Goblinin
 pisteytys perustuu ohjelman tulosteeseen. Analysaattorilta tuleva odottamaton
 tuloste ja odotetun syötteen puuttuminen kokonaan johtaisi tehtävän hylkäämiseen.
 
-Tutkimuksessa ei myöskään löytynyt viitteitä siihen, että EXPACAn
+Tutkimuksessa ei myöskään löytynyt viitteitä siihen, että EXPACA:n
 turvallisuutta olisi erikseen tutkittu. Jo pelkkä ohjelmakoodin katselmointi
 saattaisi antaa käsityksen turvallisuuteen panostamisen tarpeellisuudesta.
 Katselmoinnin apuna voitaisiin käyttää tässä työssä mainittuja staattisia
@@ -446,7 +538,7 @@ kurssihenkilökunnan muun työn ohessa toteuttamia. Luotettava tarkistin
 tarvitsee ympärilleen myös muita kurssinhallintatyökaluja, jolloin
 eheän kurssikokonaisuuden järjestäminen on työkalun elinkaaren alussa
 tärkeämpää kuin turvallisuuden yksityiskohtien hiominen. Esimerkiksi
-\citet{Hiisila2005} toteaa diplomityössään toistuvasti, että jotakin tiettyä
+Goblinia käsittelevässä diplomityössä todetaan toistuvasti, että jotakin tiettyä
 muuta näkökulmaa ei työn puitteissa ehditty tutkimaan. Tästä syystä
 turvallisuutta on tehokkainta parantaa käyttäen helposti saatavia ja valmiita
 työkaluja.
@@ -471,12 +563,12 @@ mahdollisia ongelmia. Ongelman staattisessa analyysissä havaitsevat työkalut
 myös tarjoavat opiskelijalle aiheellista palautetta turvallisen ohjelmointitavan
 noudattamisesta. Selkeä palaute on arvokkaampaa, kuin ongelman realisoituessa
 saatu virheilmoitus. Esimerkiksi UNIX-ympäristössä saatu
-"Segmentation fault"-virhe ei välttämättä auta vian löytämisessä ollenkaan, kun
+''Segmentation fault''-virhe ei välttämättä auta vian löytämisessä ollenkaan, kun
 taas lähdekoodia analysoimalla vika voidaan paikallistaa oikealle riville. Oman
 kokemukseni mukaan ainakaan TKK:n tietotekniikan opinto-ohjelmaan ei ole
-kuulunut lainkaan staattisen analyysin työkaluja. Tällöin pitäisi kuitenkin
-arvioida työkaluja toisesta perspektiivistä, mikä on oivallinen aihe
-jatkotutkimukselle.
+kuulunut lainkaan staattisen analyysin työkaluja. Tämän työn rajauksen
+ulkopuolelle jäi monia työkaluja, jotka olisivat voineet sopia opetukseen.
+Oppimista tukevien ratkaisujen etsiminen on oivallinen aihe jatkotutkimukselle.
 
 Ohjelmointiharjoituksissa käytettävällä kielellä on suuri vaikutus
 turvallisuuteen. Esimerkiksi TKK:lla aiemmin järjestetyllä Scheme-ohjelmointikurssilla
@@ -496,3 +588,5 @@ Onnistunut valinta voi turvallisempien tarkistimien lisäksi johtaa
 opiskelijoiden turvallisuustietämyksen lisääntymiseen.
 
 \pagebreak
+
+
